@@ -4,6 +4,7 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
+import org.springframework.cache.CompositeCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -15,6 +16,7 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
@@ -22,9 +24,8 @@ import java.util.concurrent.TimeUnit;
 public class CacheConfig {
 
     /**
-     * 一级缓存 - Caffeine (本地缓存)
+     * Caffeine 本地缓存
      * 优点: 访问速度快，无网络开销
-     * 适用: 频繁访问的数据
      */
     @Bean
     public CaffeineCacheManager caffeineCacheManager() {
@@ -37,9 +38,8 @@ public class CacheConfig {
     }
 
     /**
-     * 二级缓存 - Redis (分布式缓存)
+     * Redis 分布式缓存
      * 优点: 支持分布式，多实例共享
-     * 适用: 跨服务共享数据
      */
     @Bean
     public RedisCacheManager redisCacheManager(RedisConnectionFactory connectionFactory) {
@@ -65,14 +65,17 @@ public class CacheConfig {
     }
 
     /**
-     * 多级缓存管理器
+     * 组合缓存管理器 - 按顺序尝试多个缓存
      * 一级: Caffeine (本地) -> 二级: Redis (分布式)
      */
     @Bean
     @Primary
-    public CacheManager multiLevelCacheManager(
+    public CompositeCacheManager compositeCacheManager(
             CaffeineCacheManager caffeineCacheManager,
             RedisCacheManager redisCacheManager) {
-        return new MultiLevelCacheManager(caffeineCacheManager, redisCacheManager);
+        CompositeCacheManager cacheManager = new CompositeCacheManager(
+                caffeineCacheManager, redisCacheManager);
+        cacheManager.setFallbackToNoOpCache(false);
+        return cacheManager;
     }
 }
