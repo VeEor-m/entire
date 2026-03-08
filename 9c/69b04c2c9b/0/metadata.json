@@ -1,0 +1,35 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "9c69b04c2c9b",
+  "session_id": "7344ecc4-221f-4d4c-b576-0c3684d93542",
+  "strategy": "manual-commit",
+  "created_at": "2026-03-08T02:03:51.693981426Z",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "src/main/java/com/example/demo/config/CacheConfig.java",
+    "src/main/java/com/example/demo/config/MultiLevelCacheConfig.java"
+  ],
+  "agent": "Claude Code",
+  "model": "MiniMax-M2.5",
+  "turn_id": "954d123414f6",
+  "token_usage": {
+    "input_tokens": 51020,
+    "cache_creation_tokens": 17483,
+    "cache_read_tokens": 255347,
+    "output_tokens": 5074,
+    "api_call_count": 15
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-03-08T02:03:51.650125494Z",
+    "agent_lines": 10,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 10,
+    "agent_percentage": 100
+  }
+}

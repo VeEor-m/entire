@@ -1,0 +1,9 @@
+@/home/link/vscode/src/main/java/com/example/demo/config/MultiLevelCacheConfig.java使用springboot自带的
+
+---
+
+我的意思是不必创建一个@/home/link/vscode/src/main/java/com/example/demo/config/MultiLevelCacheConfig.java springboot有自己的多级缓存管理
+
+---
+
+使用组合缓存管理CompositeCacheManager

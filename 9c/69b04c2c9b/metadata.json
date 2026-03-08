@@ -1,0 +1,26 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "9c69b04c2c9b",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "src/main/java/com/example/demo/config/CacheConfig.java",
+    "src/main/java/com/example/demo/config/MultiLevelCacheConfig.java"
+  ],
+  "sessions": [
+    {
+      "metadata": "/9c/69b04c2c9b/0/metadata.json",
+      "transcript": "/9c/69b04c2c9b/0/full.jsonl",
+      "content_hash": "/9c/69b04c2c9b/0/content_hash.txt",
+      "prompt": "/9c/69b04c2c9b/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 51020,
+    "cache_creation_tokens": 17483,
+    "cache_read_tokens": 255347,
+    "output_tokens": 5074,
+    "api_call_count": 15
+  }
+}
