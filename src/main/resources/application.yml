@@ -27,9 +27,9 @@ spring:
       timeout: 6000ms
 
   cache:
-    type: redis
-    redis:
-      time-to-live: 3600000
+    type: caffeine
+    caffeine:
+      spec: maximumSize=1000,expireAfterWrite=10m
 
 jwt:
   secret: mySecretKeyForJWTTokenGenerationMustBeAtLeast256BitsLong123456
